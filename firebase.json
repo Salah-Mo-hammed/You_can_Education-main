@@ -1,0 +1,47 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "you-can-education",
+          "appId": "1:465611512920:android:1f1e9c80483fbd5df0fe2d",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "you-can-education",
+          "configurations": {
+            "android": "1:465611512920:android:1f1e9c80483fbd5df0fe2d",
+            "ios": "1:465611512920:ios:0a3495240322d77df0fe2d",
+            "macos": "1:465611512920:ios:0a3495240322d77df0fe2d",
+            "web": "1:465611512920:web:52ce576cb99761c0f0fe2d",
+            "windows": "1:465611512920:web:72b609e470a1b712f0fe2d"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "nam5",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ]
+}
