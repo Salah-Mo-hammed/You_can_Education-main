@@ -78,7 +78,7 @@ class StudentProfilePage extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Color(0xFF571874),
                         ),
                       ),
                     ],
@@ -94,7 +94,7 @@ class StudentProfilePage extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Color(0xFF571874).withOpacity(0.8),
+                        color: Color(0xFFC39BD3),
                       ),
                       child: _buildInfoCard(
                         icon: Icons.location_on,
@@ -113,7 +113,7 @@ class StudentProfilePage extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Color(0xFF571874).withOpacity(0.8),
+                        color: Color(0xFFC39BD3),
                       ),
                       child: _buildInfoCard(
                         icon: Icons.email,
@@ -132,7 +132,7 @@ class StudentProfilePage extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Color(0xFF571874).withOpacity(0.8),
+                        color: Color(0xFFC39BD3),
                       ),
                       child: _buildInfoCard(
                         icon: Icons.phone,
@@ -173,13 +173,11 @@ class StudentProfilePage extends StatelessWidget {
                               ),
                             );
                           },
-                          icon: const Icon(Icons.edit),
+                          icon: const Icon(Icons.login_outlined),
                           label: const Text("Sign Out"),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(
-                              0xFF571874,
-                            ).withOpacity(0.8),
-                            foregroundColor: Colors.white,
+                            backgroundColor: Color(0xFFC39BD3),
+                            foregroundColor: Color(0xFF571874),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 32,
                               vertical: 14,
@@ -209,10 +207,8 @@ class StudentProfilePage extends StatelessWidget {
                           icon: const Icon(Icons.edit),
                           label: const Text("Edit Profile"),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(
-                              0xFF571874,
-                            ).withOpacity(0.8),
-                            foregroundColor: Colors.white,
+                            backgroundColor: Color(0xFFC39BD3),
+                            foregroundColor: Color(0xFF571874),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 32,
                               vertical: 14,
@@ -317,7 +313,7 @@ class StudentProfilePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFFF2F2F2),
+                      color: Color(0xFF571874),
                     ),
                   ),
                 ],

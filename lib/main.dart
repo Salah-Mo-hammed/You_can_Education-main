@@ -18,6 +18,9 @@ import 'package:grad_project_ver_1/injection_container.dart';
 import 'package:grad_project_ver_1/restart_widget.dart';
 
 void main() async {
+    FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+  };
   debugPrintRebuildDirtyWidgets = false;
 
   WidgetsFlutterBinding.ensureInitialized();

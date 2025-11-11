@@ -15,10 +15,9 @@ class CommonWidgets {
       child: Text(
         title,
         style: TextStyle(
-          color: Color(0xFF571874),
+          color: Color(0xFF4C1565),
           fontSize: 28,
-          fontWeight:
-              needWeight ? FontWeight.bold : FontWeight.normal,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -29,7 +28,7 @@ class CommonWidgets {
       padding: const EdgeInsets.only(left: 10, bottom: 10),
       child: Text(
         subTitle,
-        style: TextStyle(color: Color(0xFF571874)),
+        style: TextStyle(color: Color(0xFF4C1565)),
       ),
     );
   }
@@ -42,185 +41,171 @@ class CommonWidgets {
     required BuildContext context,
     String? currentStudentName,
   }) {
-    return courses.isEmpty
-        ? InkWell(
-          child: Center(child: Text(" no courses syudepid student")),
-        )
-        : InkWell(
-          onTap:
-              () =>
-                  !inMyLearning
-                      ? Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder:
-                              (context) => CourseDetailsForStudent(
-                                course: courses[index],
-                                studentId: currentStudentId,
-                                // isInMyLearning: inMyLearning,
-                              ),
-                        ),
-                      )
-                      : Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder:
-                              (context) => CourseSessionsPage(
-                                courseUrls: courses[index].urls,
-                              ),
+    final course = courses[index];
+
+    return InkWell(
+      onTap: () {
+        if (!inMyLearning) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) => CourseDetailsForStudent(
+                    course: course,
+                    studentId: currentStudentId,
+                  ),
+            ),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) =>
+                      CourseSessionsPage(courseUrls: course.urls),
+            ),
+          );
+        }
+      },
+      child: Container(
+        width: 220,
+        height: 140,
+        margin: const EdgeInsets.symmetric(
+          horizontal: 6,
+          vertical: 8,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.15),
+              blurRadius: 8,
+              offset: const Offset(2, 4),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            // 🖼️ خلفية الصورة
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                course.imageUrl ??
+                    "https://imgs.search.brave.com/6uAR6thSuhSUVGjEAgQ2RWvURsGXMKs9IyolxzPGH_Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2IzLzM3/LzY0L2IzMzc2NDgx/ZThmOTE3NTZiZmY0/NTg5YTI3MmVhYmYz/LmpwZw",
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+                errorBuilder:
+                    (context, error, stackTrace) => Image.asset(
+                      'assets/images/grad_logo.png',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+              ),
+            ),
+
+            // 🟣 طبقة بنفسجية شفافة فوق الصورة
+            Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFF571874).withOpacity(0.65),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+
+            // 📄 المحتوى فوقهم
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // 🏷️ اسم الكورس
+                  Text(
+                    course.title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+
+                  // 👨‍🎓 عدد الطلاب
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.folder_copy_outlined,
+                        color: Colors.white,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 6),
+                      const Text(
+                        "0 Students of 20",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
                         ),
                       ),
-          child: Card(
-            color: const Color(0xFFB388EB), // light purple background
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            elevation: 3,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 100,
-              vertical: 6,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // --- Image section ---
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8.0,
-                    horizontal: 20,
+                    ],
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.network(
-                      courses[index].imageUrl == null
-                          ? "https://imgs.search.brave.com/6uAR6thSuhSUVGjEAgQ2RWvURsGXMKs9IyolxzPGH_Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2IzLzM3/LzY0L2IzMzc2NDgx/ZThmOTE3NTZiZmY0/NTg5YTI3MmVhYmYz/LmpwZw"
-                          : courses[index].imageUrl!,
-                      width: 120,
-                      height: 120,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset(
-                          'assets/images/grad_logo.png',
-                          width: double.infinity,
-                          height: 120,
-                          fit: BoxFit.cover,
-                        );
-                      },
-                    ),
-                  ),
-                ),
 
-                // --- Course info section ---
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
+                  // 📊 Progress bar
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment:
                             MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
-                            courses[index].title,
-                            style: const TextStyle(
+                            "Progress",
+                            style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 13,
                             ),
                           ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star_border_outlined,
-                                color: Colors.white,
-                                size: 17,
-                              ),
-                              Text(
-                                "4.8",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            "70%",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                            ),
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.access_time,
-                                color: Colors.white,
-                                size: 16,
-                              ),
-                              Text(
-                                "15Hrs",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ],
+                      const SizedBox(height: 4),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: LinearProgressIndicator(
+                          value: 0.7,
+                          minHeight: 8,
+                          backgroundColor: Colors.white.withOpacity(
+                            0.4,
                           ),
-
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.folder,
-                                color: Colors.white,
-                                size: 16,
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(
+                                Colors.white,
                               ),
-                              Text(
-                                "10 Students",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                        ),
                       ),
-
-                      // // --- Enroll Button ---
-                      // SizedBox(
-                      //   width: double.infinity,
-                      //   child: ElevatedButton(
-                      //     onPressed: () {
-                      //       print(
-                      //         "Enroll clicked for ${courses[index].title}",
-                      //       );
-                      //     },
-                      //     style: ElevatedButton.styleFrom(
-                      //       backgroundColor: Colors.white,
-                      //       foregroundColor: const Color(
-                      //         0xFF4C1565,
-                      //       ), // purple text
-                      //       shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(20),
-                      //       ),
-                      //     ),
-                      //     child: const Text("ENROLL"),
-                      //   ),
-                      // ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
+          ],
+        ),
+      ),
+    );
   }
 
   Padding buildStack(bool inCertificates) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 10.0,
-        vertical: 12,
+        horizontal: 20.0,
+        vertical: 15,
       ),
       child: Container(
         height: inCertificates ? 230 : 200,
