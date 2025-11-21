@@ -17,6 +17,7 @@ import 'package:grad_project_ver_1/firebase_options.dart';
 import 'package:grad_project_ver_1/injection_container.dart';
 import 'package:grad_project_ver_1/restart_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 // date 21-11-2025
 void main() async {
   FlutterError.onError = (FlutterErrorDetails details) {
