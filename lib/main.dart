@@ -16,9 +16,10 @@ import 'package:grad_project_ver_1/features/clean_you_can/trainer/presintation/b
 import 'package:grad_project_ver_1/firebase_options.dart';
 import 'package:grad_project_ver_1/injection_container.dart';
 import 'package:grad_project_ver_1/restart_widget.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+// date 21-11-2025
 void main() async {
-    FlutterError.onError = (FlutterErrorDetails details) {
+  FlutterError.onError = (FlutterErrorDetails details) {
     FlutterError.dumpErrorToConsole(details);
   };
   debugPrintRebuildDirtyWidgets = false;
@@ -80,7 +81,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         // showPerformanceOverlay: true,
         theme: ThemeData(scaffoldBackgroundColor: Color(0xFFC39BD3)),
-        home: SplashPage(),
+        home: Scaffold(
+          body: Center(
+            child: SpinKitFadingCube(
+              // waveColor: Colors.black,
+              color: Colors.white,
+              size: 50.0,
+            ),
+          ),
+        ),
       ),
     );
   }
