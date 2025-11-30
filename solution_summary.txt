@@ -1,0 +1,28 @@
+SOLUTION SUMMARY:
+==================
+
+✅ PROBLEM SOLVED: Center login data persistence issue
+
+�� CHANGES MADE:
+
+1. Modified AuthBloc (lib/features/auth/presintation/bloc/auth_bloc.dart):
+   - Added CenterGeneralBloc? centerGeneralBloc field
+   - Added import for CenterGeneralBloc and GetCenterInfoEvent
+   - Modified _onLogIn method to dispatch GetCenterInfoEvent when role == 'center'
+   - Modified _onRegister method to dispatch GetCenterInfoEvent when role == 'center'
+   - Added debug print statements to track event dispatch
+
+2. Updated injection container (lib/injection_container.dart):
+   - Added centerGeneralBloc: sl<CenterGeneralBloc>() to AuthBloc registration
+
+🎯 RESULT:
+- Every center login now automatically triggers GetCenterInfoEvent
+- Center data is fetched fresh on every login, not just the first time
+- No more stale data after logout/login cycles
+- Debug prints help track the event dispatch
+
+📝 KEY FILES MODIFIED:
+- lib/features/auth/presintation/bloc/auth_bloc.dart
+- lib/injection_container.dart
+
+The solution ensures that whenever a center logs in, the AuthBloc automatically dispatches GetCenterInfoEvent to fetch the correct center data, solving the original problem where subsequent logins showed old data.
