@@ -1,7 +1,5 @@
 # 🎓 YouCan – Educational Center Management App  Version 2
 
-### you can see the first version from here: 
-
 A **cross-platform Flutter application** designed to help educational centers digitize their operations. The app allows students to enroll in courses, communicate with instructors, and receive certifications, while giving centers full control over course management and student tracking.  
 
 ---
