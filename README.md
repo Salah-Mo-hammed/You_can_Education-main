@@ -1,23 +1,30 @@
-# You Can Center: Educational App
-- Some vidios in the next Google Drive , to see all application's features and what it does 
+# 🎓 YouCan – Educational Center Management App  Version 2
 
-https://drive.google.com/drive/folders/13dsTggw7uWhsuStS6UeGrzGemMe-Bt3Q?usp=sharing
+### you can see the first version from here: 
 
-below is some screenshots of the application 
+A **cross-platform Flutter application** designed to help educational centers digitize their operations. The app allows students to enroll in courses, communicate with instructors, and receive certifications, while giving centers full control over course management and student tracking.  
 
+---
 
+## ✨ Features  
 
+- 👨‍🏫 **Multi-role System**: Separate dashboards for **students** and **educational centers** with role-based access.  
+- 📚 **Course Management**: Real-time course booking, assignments, and feedback.  
+- 💬 **Communication Tools**: Direct messaging between students and instructors.  
+- 📊 **Student Dashboard**: Progress tracking, assignments, and digital certificates.  
+- 🔒 **Secure Authentication**: Firebase Auth with role-based access control.  
+- ☁️ **Cloud Sync**: Real-time updates powered by Firebase Firestore & Cloud Storage.  
 
+---
 
+## 🛠️ Tech Stack  
 
-<img width="372" height="819" alt="final_chat_with_trainer" src="https://github.com/user-attachments/assets/121ce65e-2600-46a2-9644-90ead17a1295" />
-<img width="354" height="816" alt="center's requests" src="https://github.com/user-attachments/assets/87970e3b-cb5f-4b25-9dc7-fa3574c0ecc5" />
-<img width="367" height="826" alt="center and it's courses" src="https://github.com/user-attachments/assets/1c439350-546e-4022-8475-990c5a78e9e6" />
-<img width="369" height="817" alt="student_enrolled_courses" src="https://github.com/user-attachments/assets/3c7d63bc-fe38-4e1e-8fce-df68c4c63e90" />
+- **Framework:** Flutter (cross-platform)  
+- **Architecture:** Clean Architecture, Modular Code  
+- **State Management:** BLoC + GetIt (Dependency Injection)  
+- **Backend & Cloud:** Firebase (Auth, Firestore, Storage, Messaging)  
+- **Networking:** Dio (REST API integration, error handling)  
 
+---
 
-
-<img width="380" height="811" alt="student final dashboard availale courses" src="https://github.com/user-attachments/assets/c59dac47-5646-4b36-9a1c-1fff5c7f45d5" />
-
-
-
+## 📱 Screenshots  
